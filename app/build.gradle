@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '23.0.1'
+
+    defaultConfig {
+        applicationId "net.hovait.barared.printtest02"
+        minSdkVersion 21
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        debug {
+            debuggable true
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'http://192.168.55.230:8585/repository/internal/' }
+    maven { url 'http://192.168.55.230:8585/repository/snapshots/' }
+    maven { url 'http://repo.spring.io/milestone' }
+}
+
+dependencies {
+    // Maven Central
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:design:23.1.0'
+    testCompile 'junit:junit:4.12'
+    // REST Components
+    compile 'org.springframework.android:spring-android-rest-template:2.0.0.M1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
+    //compile 'org.androidannotations:androidannotations-api:3.3.2'
+    compile 'com.github.kevinsawicki:http-request:6.0'
+    compile 'com.google.code.gson:gson:2.4'
+    // Maven Internal
+    compile 'oracle:ojdbc6:11.2.0.4.0'
+    compile 'com.starmicronics:stario:3.1'
+    // Other Libs
+}
